@@ -13,6 +13,7 @@ public class Saisir extends Command {
 	public void execute(){
 		String texte = String.valueOf(ihm.getCar());
 		System.out.println("Caractère ajouté : " + texte);
+		System.out.println("Contenu du buffer : " + me.getBuffer().getContenu().toString());
 		me.saisir(texte);
 	}
 	

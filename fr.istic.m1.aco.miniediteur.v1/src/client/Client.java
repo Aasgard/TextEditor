@@ -24,11 +24,11 @@ public class Client {
 		commandes.put("selectionner", new Selectionner(me, ihmo));
 		
 		ihmo.setCommands(commandes);
-		
 		me.registerObserver(ihmo);
 		
 		/* Finalisation de l'IHM */
-		//ihm.creerTousBoutons();
+		ihmo.createTextArea();
+		ihmo.loadButtons();
 		ihmo.launch();
 		
 	}

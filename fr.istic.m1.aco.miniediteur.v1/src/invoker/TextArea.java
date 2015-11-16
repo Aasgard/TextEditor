@@ -27,9 +27,11 @@ public class TextArea extends JTextArea {
 		final Command selectionner = comm.get("selectionner");
 		final Command saisir = comm.get("saisir");
 		
+		System.out.println("Constructeur du TA : " + comm);
+		
 		this.setLineWrap(true);
 		Border border = BorderFactory.createLineBorder(Color.BLACK);
-		this.setBorder(BorderFactory.createCompoundBorder(border, BorderFactory.createEmptyBorder(10, 10, 10, 10)));
+		this.setBorder(BorderFactory.createCompoundBorder(border,BorderFactory.createEmptyBorder(10, 10, 10, 10)));
 
 		this.addCaretListener(new CaretListener() {
 			@Override

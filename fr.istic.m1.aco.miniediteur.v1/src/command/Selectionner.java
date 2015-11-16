@@ -14,7 +14,6 @@ public class Selectionner extends Command {
 		int debut = ihm.getDebutSelection();
 		int fin = ihm.getLongueurSelection();
 		me.selectionner(debut, fin);
-
 	}
 
 }

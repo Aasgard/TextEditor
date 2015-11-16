@@ -12,10 +12,9 @@ public class IHM extends JFrame{
 
 	private static final long serialVersionUID = 1L;
 
-	@SuppressWarnings("unused")
 	private ArrayList<Bouton> lesBoutons;
 	
-	private TextArea texteA;
+	protected TextArea texteA;
 	
 	private Command copier;
 	private Command couper;
@@ -31,29 +30,35 @@ public class IHM extends JFrame{
 		this.setResizable(false);
 		this.setLayout(null);
 		lesBoutons = new ArrayList<Bouton>();
-		
+	}
+	
+	public void createTextArea(){
 		HashMap<String, Command> h = new HashMap<String, Command>();
 		h.put("selectionner", selectionner);
 		h.put("saisir", saisir);
 		
+		System.out.println("Commandes du TextArea : " + h);
 		this.texteA = new TextArea(h);
-		
-		Bouton bCouper = new Bouton("Couper", this.couper);
-		bCouper.setBounds(10, 10, 90, 30);
-		
-		Bouton bCopier = new Bouton("Copier", this.copier);
-		bCopier.setBounds(110, 10, 90, 30);
-		
-		Bouton bColler = new Bouton("Coller", this.coller);
-		bColler.setBounds(210, 10, 90, 30);
-		
 		this.texteA.setBounds(10, 50, 775, 415);
+		
+		this.add(texteA);
+		
+	}
+	
+	public void loadButtons(){
+		Bouton bCouper = new Bouton("Couper", couper);
+		bCouper.setBounds(10, 10, 90, 30);
+		lesBoutons.add(bCouper);
+		Bouton bCopier = new Bouton("Copier", copier);
+		bCopier.setBounds(110, 10, 90, 30);
+		lesBoutons.add(bCopier);
+		Bouton bColler = new Bouton("Coller", coller);
+		bColler.setBounds(210, 10, 90, 30);
+		lesBoutons.add(bColler);
 		
 		this.add(bCopier);
 		this.add(bColler);
 		this.add(bCouper);
-		
-		this.add(texteA);
 	}
 	
 	public void launch(){
@@ -73,6 +78,7 @@ public class IHM extends JFrame{
 	}
 	
 	public void setCommands(HashMap<String, Command> h) throws Exception {
+		System.out.println("Commandes venant de Client : " + h);
 		this.couper = h.get("couper");
 		if (this.couper == null) throw new Exception("commande \"couper\" manquante");
 		this.copier = h.get("copier");
