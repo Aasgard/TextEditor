@@ -26,6 +26,8 @@ public class TextArea extends JTextArea {
 
 		final Command selectionner = comm.get("selectionner");
 		final Command saisir = comm.get("saisir");
+		final Command effacer = comm.get("effacer");
+		final Command supprimer = comm.get("supprimer");
 		
 		System.out.println("Constructeur du TA : " + comm);
 		
@@ -51,9 +53,11 @@ public class TextArea extends JTextArea {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				e.consume();
-				if (e.getKeyChar() != '\b') {
+				char keyChar = e.getKeyChar();
+				if (e.getKeyChar() != '\b' && (int)keyChar != 127){ //127 est la touche suppression
 					dernierCar = e.getKeyChar();
 					saisir.execute();
+					setSelection(getDebutSelection()+1, 0);
 				}
 			}
 
@@ -64,6 +68,14 @@ public class TextArea extends JTextArea {
 			public void keyPressed(KeyEvent e) {
 				if (!e.isActionKey()) {
 					e.consume();
+					if (e.getKeyCode() == KeyEvent.VK_BACK_SPACE){
+						effacer.execute();
+						System.out.println("On appuie sur retour arriere");
+					}
+					if (e.getKeyCode() == KeyEvent.VK_DELETE){
+						e.consume();
+						supprimer.execute();
+					}
 				}
 			}
 		});

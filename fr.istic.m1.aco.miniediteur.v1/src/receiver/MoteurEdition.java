@@ -37,6 +37,38 @@ public class MoteurEdition extends Subject implements IMoteurEdition {
 			this.selection.initSelection();
 		}
 	}
+	
+	@Override
+	public void effacer() {
+		int debut = this.selection.getDebut();
+		if(this.selection.getLongueur() > 0){
+			this.buffer.getContenu().delete(debut, debut+this.selection.getLongueur());
+			this.selection.initSelection();
+		}
+		if (debut == 0 && this.selection.getLongueur() == 0){
+			notifyObservers();
+			return;
+		}
+		else{
+			this.buffer.getContenu().delete(debut-1, debut);
+			this.selection.setDebut(debut-1);		
+		}
+		notifyObservers();
+	}
+	
+	@Override
+	public void supprimer() {
+		if(this.selection.getLongueur() > 0){
+			this.buffer.getContenu().delete(this.selection.getDebut(), this.selection.getDebut()+this.selection.getLongueur());
+			this.selection.initSelection();
+		}
+		else{
+			int debut = this.selection.getDebut();
+			this.buffer.getContenu().delete(debut, debut+1);
+			this.selection.setDebut(debut);		
+		}
+		notifyObservers();
+	}
 
 	@Override
 	public void couper() {

@@ -21,6 +21,8 @@ public class Client {
 		commandes.put("saisir", new Saisir(me, ihmo));
 		commandes.put("coller", new Coller(me));
 		commandes.put("copier", new Copier(me));
+		commandes.put("effacer", new Effacer(me));
+		commandes.put("supprimer", new Supprimer(me));
 		commandes.put("selectionner", new Selectionner(me, ihmo));
 		
 		ihmo.setCommands(commandes);
