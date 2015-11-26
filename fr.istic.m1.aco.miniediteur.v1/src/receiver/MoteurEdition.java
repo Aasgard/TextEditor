@@ -33,7 +33,6 @@ public class MoteurEdition extends Subject implements IMoteurEdition {
 		if(selection.getLongueur() > 0 ){
 			String contenuSelection = selection.getContenu();
 			pressePapier.setContenu(contenuSelection);
-			//System.out.println("Presse-papier : "+ this.getPressePapier().getContenu().toString());
 			this.selection.initSelection();
 		}
 	}
@@ -77,8 +76,6 @@ public class MoteurEdition extends Subject implements IMoteurEdition {
 			pressePapier.setContenu(contenuSelection);
 			this.buffer.getContenu().delete(this.selection.getDebut(), this.selection.getDebut()+this.selection.getLongueur());
 			this.selection.initSelection();
-			//System.out.println("Buffer : "+this.buffer.getContenu().toString());
-			//System.out.println("Presse-papier : "+ this.getPressePapier().getContenu().toString());
 			notifyObservers();
 		}
 	}

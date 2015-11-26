@@ -13,7 +13,7 @@ public class Selectionner extends Command {
 	public void execute() {
 		int debut = ihm.getDebutSelection();
 		int fin = ihm.getLongueurSelection();
-		System.out.println("Ceci est la commande : " + debut);
+		System.out.println("Début de Sélection : " + debut);
 		me.selectionner(debut, fin);
 	}
 
