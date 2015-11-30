@@ -6,8 +6,6 @@ public  interface IMoteurEdition {
 	
 	public void effacer();
 	
-	public void supprimer();
-	
 	public void copier();
 	
 	public void couper();

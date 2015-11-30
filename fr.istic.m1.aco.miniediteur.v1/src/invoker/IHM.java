@@ -21,7 +21,6 @@ public class IHM extends JFrame{
 	private Command selectionner;
 	private Command saisir;
 	private Command coller;
-	private Command supprimer;
 	private Command effacer;
 	
 	public IHM(){
@@ -39,7 +38,6 @@ public class IHM extends JFrame{
 		h.put("selectionner", selectionner);
 		h.put("saisir", saisir);
 		h.put("effacer", effacer);
-		h.put("supprimer", supprimer);
 		
 		System.out.println("Commandes du TextArea : " + h);
 		this.texteA = new TextArea(h);
@@ -95,8 +93,6 @@ public class IHM extends JFrame{
 		if (this.saisir == null) throw new Exception("commande \"saisir\" manquante");
 		this.effacer = h.get("effacer");
 		if (this.effacer == null) throw new Exception("commande \"effacer\" manquante");
-		this.supprimer = h.get("supprimer");
-		if (this.supprimer == null) throw new Exception("commande \"supprimer\" manquante");
 	}
 	
 }
