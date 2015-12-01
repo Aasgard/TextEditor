@@ -9,11 +9,17 @@ public class IHMObserver extends IHM implements Observer {
 	private static final long serialVersionUID = 1L;
 	protected Subject sub;
 	
+	/**
+	 * Constructeur par défaut.
+	 * @param subject : sujet de l'observation. (Moteur d'édition).
+	 */
 	public IHMObserver(Subject subject){
 		this.sub = subject;
 	}
-	
-	@Override
+
+	/**
+	 * Refresh des Observés avec les nouveaux paramètres.
+	 */
 	public void notifyMe() {
 		MoteurEdition m = (MoteurEdition) sub;
 		texteA.rafraichir(m.getBuffer().getContenu().toString(), m.getSelection().getDebut(), m.getSelection().getLongueur());

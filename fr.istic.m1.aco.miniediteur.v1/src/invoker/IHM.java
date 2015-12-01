@@ -10,8 +10,6 @@ import command.Command;
 
 public class IHM extends JFrame{
 
-	private static final long serialVersionUID = 1L;
-
 	private ArrayList<Bouton> lesBoutons;
 	
 	protected TextArea texteA;
@@ -23,6 +21,11 @@ public class IHM extends JFrame{
 	private Command coller;
 	private Command effacer;
 	
+	/**
+	 * Constructeur par défaut de la classe IHM.
+	 * Etablit les configurations de bases de la fenêtre(Titre, taille, comportements ...).
+	 * Elle initialise un ArrayList servant à stocker les Boutons.
+	 */
 	public IHM(){
 		this.setTitle("Editeur de texte - V1");
 		this.setSize(new Dimension(800, 500));
@@ -33,6 +36,13 @@ public class IHM extends JFrame{
 		lesBoutons = new ArrayList<Bouton>();
 	}
 	
+	/**
+	 * Fonction créant la zone de texte principale de l'affichage graphique.
+	 * Initialisation d'un HM de commandes. (String, Command).
+	 * On y stocke les Commandes principales de la zone de texte (Sélection, Saisie, Effacer).
+	 * 
+	 * Construction et ajout du nouvel objet TextArea à la fenêtre graphique.
+	 */
 	public void createTextArea(){
 		HashMap<String, Command> h = new HashMap<String, Command>();
 		h.put("selectionner", selectionner);
@@ -44,9 +54,12 @@ public class IHM extends JFrame{
 		this.texteA.setBounds(10, 50, 775, 415);
 		
 		this.add(texteA);
-		
 	}
 	
+	/**
+	 * Création et ajout des boutons à l'interface graphique.
+	 * Utilisation de la classe bouton et ajout des commandes adaptées en paramètre.
+	 */
 	public void loadButtons(){
 		Bouton bCouper = new Bouton("Couper", couper);
 		bCouper.setBounds(10, 10, 90, 30);
@@ -63,22 +76,42 @@ public class IHM extends JFrame{
 		this.add(bCouper);
 	}
 	
+	/**
+	 * Affiche l'interface graphique.
+	 */
 	public void launch(){
 		this.setVisible(true);
 	}
 	
+	/**
+	 * Retourne le dernier Character du TextArea.
+	 * @return : dernier caractère de la zone de texte.
+	 */
 	public char getCar() {
 		return this.texteA.getDernierCar();
 	}
 	
+	/**
+	 * Retourne l'index du début de la sélection.
+	 * @return : index du début de la sélection
+	 */
 	public int getDebutSelection() {
 		return this.texteA.getDebutSelection();
 	}
 
+	/**
+	 * Retourne l'index de fin de sélection.
+	 * @return : index de fin de sélection
+	 */
 	public int getLongueurSelection() {
 		return this.texteA.getLongueurSelection();
 	}
 	
+	/**
+	 * Initialisation des commandes (toutes).
+	 * @param h : HM de String,Command , on récupère la Command associée au terme en clef.
+	 * @throws Exception : Non présence de la commande dans le HM. (Erreur de configuration)
+	 */
 	public void setCommands(HashMap<String, Command> h) throws Exception {
 		System.out.println("Commandes venant de Client : " + h);
 		this.couper = h.get("couper");

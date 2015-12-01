@@ -11,7 +11,14 @@ public class Client {
 	private static MoteurEdition me;
 	private static IHMObserver ihmo;
 	private static HashMap<String, Command> commandes;
-	
+
+	/**
+	 * Classe principale de lancement.
+	 * Création d'un MoteurEdition et de l'IHM avec le ME en paramètre (attribution).
+	 * Création des commandes, se référant aux objets correspondants, et passés à 
+	 * @param args : Paramètre de base
+	 * @throws Exception : Exception lancée si erreur
+	 */
 	public static void main(String[] args) throws Exception {
 		me = new MoteurEdition();
 		ihmo = new IHMObserver(me);
