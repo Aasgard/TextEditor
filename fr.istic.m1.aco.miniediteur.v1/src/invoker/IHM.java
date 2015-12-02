@@ -81,11 +81,11 @@ public class IHM extends JFrame{
 		lesBoutons.add(bCopier);
 		Bouton bColler = new Bouton("Coller", coller);
 		bColler.setBounds(210, 10, 90, 30);
-		bColler.addActionListener(new ActionListener() {
+		/*bColler.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				texteA.requestFocusInWindow();
 			}
-		});
+		});*/
 		lesBoutons.add(bColler);
 		
 		this.add(bCopier);
@@ -98,6 +98,7 @@ public class IHM extends JFrame{
 	 */
 	public void launch(){
 		this.setVisible(true);
+		texteA.requestFocus();
 	}
 	
 	/**
