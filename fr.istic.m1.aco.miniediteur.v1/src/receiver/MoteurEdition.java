@@ -14,7 +14,7 @@ public class MoteurEdition extends Subject implements IMoteurEdition {
 	
 	/**
 	 * Constructeur du MoteurEdition.
-	 * Initialisation "neutres" des différentes classes métiers (Buffer, Sélection, PressPapier)
+	 * Initialisation "neutres" des différentes classes métiers (Buffer, Sélection, PressePapier)
 	 */
 	public MoteurEdition() {
 		observers = new ArrayList<Observer>();
@@ -26,7 +26,8 @@ public class MoteurEdition extends Subject implements IMoteurEdition {
 	/**
 	 * Reproduction de la commande Coller classique.
 	 * Récupération du contenu du PressePapier.
-	 * Ajout au buffer de qui a été enlevé.
+	 * Création d'un StringBuffer contenant le contenu du PressePapier.
+	 * Ajout au buffer au niveau du début de la selection.
 	 * Début de la Sélection modifiée (Endroit de Collage et ajout de la longueur du texte dans le PP).
 	 * Remise à 0 de la longueur et contenu de la Sélection.
 	 */
@@ -41,7 +42,7 @@ public class MoteurEdition extends Subject implements IMoteurEdition {
 
 	/**
 	 * Reproduction de la commande Copier classique.
-	 * Récupération du contenu de la Sélection et on le stocke dans le PP.
+	 * Récupération du contenu de la Sélection que l'on stocke dans le PP.
 	 * Remise à 0 de la longueur et contenu de la Sélection.
 	 */
 	@Override
@@ -55,8 +56,8 @@ public class MoteurEdition extends Subject implements IMoteurEdition {
 	
 	/**
 	 * Reproduction de la commande Effacer classique.
-	 * Suppression du texte.
-	 * Si longueur de Sélection supérieure à 0, on supprime la longueur de la chaine texte.
+	 * Suppression du caractère précedent le début de la sélection.
+	 * Si longueur de Sélection supérieure à 0, on supprime la longueur de la chaine texte à partir du début de la sélection.
 	 */
 	@Override
 	public void effacer() {
@@ -94,6 +95,7 @@ public class MoteurEdition extends Subject implements IMoteurEdition {
 
 	/**
 	 * Saisie d'un texte dans le Buffer.
+	 * Puis on modifie le debut de la selection en y rajoutant la longueur du texte
 	 * @param texte : texte à saisir dans le Buffer
 	 */
 	@Override
@@ -139,6 +141,10 @@ public class MoteurEdition extends Subject implements IMoteurEdition {
 		return this.selection;
 	}
 
+	/**
+	 * Permets de notifier l'obersver (l'IHM) d'un changement
+	 * @see observer.Subject#notifyObservers()
+	 */
 	@Override
 	public void notifyObservers() {
 		for (Iterator<Observer> it = observers.iterator(); it.hasNext();) {
