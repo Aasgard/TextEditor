@@ -35,7 +35,6 @@ public class TextArea extends JTextArea {
 		final Command selectionner = comm.get("selectionner");
 		final Command saisir = comm.get("saisir");
 		final Command effacer = comm.get("effacer");
-		final Command supprimer = comm.get("supprimer");
 		
 		this.setChangementPosition(false);
 		
@@ -106,7 +105,6 @@ public class TextArea extends JTextArea {
 					}
 					if (e.getKeyCode() == KeyEvent.VK_DELETE){
 						e.consume();
-						supprimer.execute();
 					}
 				}
 			}

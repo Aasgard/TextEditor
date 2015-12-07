@@ -71,6 +71,7 @@ public class IHM extends JFrame{
 			}
 		});
 		lesBoutons.add(bCouper);
+		
 		Bouton bCopier = new Bouton("Copier", copier);
 		bCopier.setBounds(110, 10, 90, 30);
 		bCopier.addActionListener(new ActionListener() {
@@ -79,13 +80,14 @@ public class IHM extends JFrame{
 			}
 		});
 		lesBoutons.add(bCopier);
+		
 		Bouton bColler = new Bouton("Coller", coller);
 		bColler.setBounds(210, 10, 90, 30);
-		/*bColler.addActionListener(new ActionListener() {
+		bColler.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				texteA.requestFocusInWindow();
 			}
-		});*/
+		});
 		lesBoutons.add(bColler);
 		
 		this.add(bCopier);
