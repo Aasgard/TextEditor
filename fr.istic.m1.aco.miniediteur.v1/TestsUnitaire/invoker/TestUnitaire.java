@@ -1,10 +1,12 @@
-package receiver;
+package invoker;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-public class TestEditeur {
+import receiver.MoteurEdition;
+
+public class TestUnitaire {
 	
 	private MoteurEdition me;
 	
@@ -327,9 +329,4 @@ public class TestEditeur {
 		assertEquals(me.getBuffer().getContenu().toString(), " chien chien oiseau");
 	}
 	
-	@Test
-	public void testSupprimer() {
-	}
-	
-
 }
